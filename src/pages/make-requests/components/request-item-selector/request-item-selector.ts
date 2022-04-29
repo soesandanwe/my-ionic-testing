@@ -12,6 +12,7 @@ export class RequestItemSelector implements OnInit{
   selectOptions: any;
 
   @ViewChild('itemSelector') itemSelector: Select;
+
   constructor(public modalCtrl: ModalController,public popoverCtrl: PopoverController,public navController: NavController) {
 
   }
@@ -22,10 +23,9 @@ export class RequestItemSelector implements OnInit{
     modal.onDidDismiss(dataReturned => {
       if(dataReturned!=null) {
         if(this.selectedItem.length>0) {
-          this.selectedItem.forEach(item=> {
             this.selectedItem.pop();
             this.selectedItem.push(dataReturned);
-          });
+
         }
         else {
           this.selectedItem.push(dataReturned);
