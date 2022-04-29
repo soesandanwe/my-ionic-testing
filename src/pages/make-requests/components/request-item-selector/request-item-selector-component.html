@@ -16,9 +16,9 @@
       <form [formGroup]="itemListForm">
       <ion-list radio-group *ngFor="let requestItem of requestItems" (ionChange)="onChangeHandler(requestItem)" formControlName="itemList">
         <ion-item  >
-          <ion-radio item-left value="eRquestItem"></ion-radio>
+          <ion-radio item-left value="requestItem"></ion-radio>
           <ion-thumbnail item-left class="thumbnail">
-            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw=="/>
+            <img *ngIf="requestItem.itemImage" [src]="'data:image/png;base64,'+ requestItem.itemImage"/>
           </ion-thumbnail>
           <ion-label>{{ requestItem.itemName }}</ion-label>
         </ion-item>

@@ -1,5 +1,5 @@
-import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {ModalController, NavController, Select} from "ionic-angular";
+import {Component,  OnInit, ViewChild} from "@angular/core";
+import {ModalController,  Select} from "ionic-angular";
 import {RequestItemSelectorComponent} from "./request-item-selector-component";
 @Component({
   selector: 'request-item-selector',
@@ -15,9 +15,11 @@ export class RequestItemSelector implements OnInit{
     this.itemSelector.close();
     let modal = this.modalCtrl.create(RequestItemSelectorComponent, characterNum);
     modal.onDidDismiss(dataReturned => {
-    //  console.log(dataReturned);
-      this.itemSelector.selectedText = dataReturned.itemName;
-     // this.optionsFn(dataReturned);
+      if(dataReturned!=null) {
+        this.selectedItem= dataReturned;
+        this.itemSelector.selectedText = this.selectedItem.itemName;
+        this.optionsFn(dataReturned);
+      }
     });
     return await modal.present();
   }
