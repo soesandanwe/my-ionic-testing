@@ -1,0 +1,25 @@
+<ion-content>
+  <ion-grid class="makeRequestsTabGrid" >
+    <ion-row>
+      <span><ion-icon name="book" class="requestIcon"></ion-icon></span>
+      <p class="requestLabel">Requests</p>
+    </ion-row>
+    <ion-row>
+      <img src="'data:image/gif;base64',R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw=="/>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Select a Request Item</ion-label>
+            <ion-select #itemSelector [(ngModel)]="selectedItem" (click)="openModal({charNum: 0})" (ionChange)="optionsFn($event);">
+
+            </ion-select>
+      </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <button type="submit">Next</button>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

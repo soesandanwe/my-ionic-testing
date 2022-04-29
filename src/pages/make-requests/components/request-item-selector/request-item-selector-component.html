@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Select a Request Item
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-searchbar (ionInput)="getItems($event)" showCancelButton="focus"></ion-searchbar>
+</ion-header>
+<ion-content>
+    <ion-grid class="makeRequestsTabGrid">
+      <form [formGroup]="itemListForm">
+      <ion-list radio-group *ngFor="let requestItem of requestItems" (ionChange)="onChangeHandler(requestItem)" formControlName="itemList">
+        <ion-item  >
+          <ion-radio item-left value="eRquestItem"></ion-radio>
+          <ion-thumbnail item-left class="thumbnail">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw=="/>
+          </ion-thumbnail>
+          <ion-label>{{ requestItem.itemName }}</ion-label>
+        </ion-item>
+      </ion-list>
+      </form>
+    </ion-grid>
+</ion-content>

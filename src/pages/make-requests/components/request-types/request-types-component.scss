@@ -1,0 +1,29 @@
+request-types{
+ .no-scroll .scroll-content{
+   overflow: hidden;
+ }
+  .requestLabel{
+    padding-left: 2em;
+    font-size: 1.3em;
+    font-family: "Source Sans Pro";
+  }
+  .requestIcon{
+    font-size: 4em;
+  }
+  .requestCard{
+    width: 90%;
+    height: 150px;
+    background-color: #ffffff;
+    border: 2px solid rgb(184,188,192);
+    font-family: "Source Sans Pro" ;
+    font-weight: 600;
+    color: black;
+    border-radius: 20px;
+    font-size: 1.2em
+  }
+  .makeRequestsTabGrid{
+    padding-right: 2em;
+    padding-bottom: 2em;
+    padding-left: 2em;
+  }
+}

@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="typeOfRequests">
+    <p class="requestLabel">I want to ...</p>
+    <ion-grid class="makeRequestsTabGrid" >
+      <ion-row>
+        <ion-col col-3 *ngFor = "let requestInfo of requestsInfo" >
+          <button class="requestCard" [value]="requestInfo" (click)='goToNextPage(requestInfo)'>
+            <span><ion-icon name="book" class="requestIcon"></ion-icon></span>
+            <br><br>
+            <span>{{requestInfo.requestTitle}}</span>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+  <ng-container *ngIf="requestItem" >
+    <request-item-selector #requestscontainer class="no-scroll"></request-item-selector>
+  </ng-container>
+</ion-content>
+
