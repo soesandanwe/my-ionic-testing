@@ -22,6 +22,7 @@ export class RequestItemSelector implements OnInit{
     let modal = this.modalCtrl.create(RequestItemSelectorComponent, characterNum);
     modal.onDidDismiss(dataReturned => {
       if(dataReturned!=null) {
+
         if(this.selectedItem.length>0) {
             this.selectedItem.pop();
             this.selectedItem.push(dataReturned);

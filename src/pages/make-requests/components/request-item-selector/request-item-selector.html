@@ -13,8 +13,8 @@
       <ion-col>
         <ion-item>
           <ion-label >Select a Request Item</ion-label>
-            <ion-select #itemSelector [(ngModel)]="selectedItem" (click)="openModal({charNum: 0})" (ngModelChange)="optionsFn($event)">
-              <ion-option  *ngFor="let item of selectedItem" value="{{item.itemID}}" [selected]="item">{{item.itemName}} </ion-option>
+            <ion-select #itemSelector [(ngModel)]="selectedItem" (click)="openModal({charNum: 0})" (ionChange)="optionsFn($event)">
+              <ion-option  *ngFor="let item of selectedItem" value="{{item}}"  [selected]="item">{{item.itemName}} </ion-option>
             </ion-select>
       </ion-item>
       </ion-col>
