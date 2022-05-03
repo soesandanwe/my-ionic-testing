@@ -13,19 +13,17 @@
       <ion-col>
         <ion-item>
           <ion-label >Select a Request Item</ion-label>
-            <ion-select #itemSelector [(ngModel)]="selectedItem" (click)="openModal({charNum: 0})" (ionChange)="optionsFn($event)">
+            <ion-select #itemSelector [(ngModel)]="selectedItem" (click)="openModal({charNum: selectedItem})" (ionChange)="optionsFn($event)">
               <ion-option  *ngFor="let item of selectedItem" value="{{item}}"  [selected]="item">{{item.itemName}} </ion-option>
             </ion-select>
-      </ion-item>
+        </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
-<!--      <ion-label *ngIf="selectedItem" [(ngModel)]="selectedItem"  ngDefaultControl>{{selectedItem.itemName}}</ion-label>-->
-    </ion-row>
-    <ion-row>
-      <button type="submit">Next</button>
+      <ion-col>
+        <button ion-button float-right color="primary" type="submit" [disabled]="!selectedItem.length>0">Next</button>
+      </ion-col>
     </ion-row>
   </ion-grid>
-
 </ion-content>
 

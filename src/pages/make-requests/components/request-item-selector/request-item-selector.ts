@@ -1,5 +1,5 @@
-import {Component,  OnInit, ViewChild} from "@angular/core";
-import {ModalController,  Select,PopoverController,NavController} from "ionic-angular";
+import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
+import {ModalController,  Select} from "ionic-angular";
 import {RequestItemSelectorComponent} from "./request-item-selector-component";
 
 @Component({
@@ -9,12 +9,10 @@ import {RequestItemSelectorComponent} from "./request-item-selector-component";
 export class RequestItemSelector implements OnInit{
   selectedItem = [];
   itemName: string = '';
-  selectOptions: any;
 
   @ViewChild('itemSelector') itemSelector: Select;
 
-  constructor(public modalCtrl: ModalController,public popoverCtrl: PopoverController,public navController: NavController) {
-
+  constructor(public modalCtrl: ModalController) {
   }
   async openModal(characterNum) {
     this.itemSelector.close();
@@ -22,24 +20,20 @@ export class RequestItemSelector implements OnInit{
     let modal = this.modalCtrl.create(RequestItemSelectorComponent, characterNum);
     modal.onDidDismiss(dataReturned => {
       if(dataReturned!=null) {
-
-        if(this.selectedItem.length>0) {
-            this.selectedItem.pop();
+          if(this.selectedItem.length>0) {
+              this.selectedItem.pop();
+              this.selectedItem.push(dataReturned);
+          }
+          else {
             this.selectedItem.push(dataReturned);
-
-        }
-        else {
-          this.selectedItem.push(dataReturned);
-        }
+          }
       }
     });
     return await modal.present();
   }
   ngOnInit() {
-
   }
   optionsFn($event) {
-    console.log($event.target.value);
+    console.log($event.tag.value)
   }
-
 }

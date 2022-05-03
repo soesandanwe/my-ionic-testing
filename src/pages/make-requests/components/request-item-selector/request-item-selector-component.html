@@ -13,16 +13,24 @@
 </ion-header>
 <ion-content>
     <ion-grid class="makeRequestsTabGrid">
-      <form [formGroup]="itemListForm">
-      <ion-list radio-group *ngFor="let requestItem of requestItems" (ionChange)="onChangeHandler(requestItem)" formControlName="itemList">
-        <ion-item  >
-          <ion-radio item-left value="requestItem"></ion-radio>
-          <ion-thumbnail item-left class="thumbnail">
-            <img *ngIf="requestItem.itemImage" [src]="'data:image/png;base64,'+ requestItem.itemImage"/>
-          </ion-thumbnail>
-          <ion-label>{{ requestItem.itemName }}</ion-label>
-        </ion-item>
+      <ion-list radio-group *ngFor="let requestItem of requestItems"  [(ngModel)]="itemChecked">
+
+          <ion-item *ngIf="requestItem.itemID === '1'">
+            <ion-radio item-left [checked]="true" [value]="requestItem.itemID" (ionSelect)="onChangeHandler(requestItem,$event)"></ion-radio>
+            <ion-thumbnail item-left class="thumbnail">
+              <img *ngIf="requestItem.itemImage" [src]="'data:image/png;base64,'+ requestItem.itemImage"/>
+            </ion-thumbnail>
+            <ion-label>{{ requestItem.itemName }}</ion-label>
+          </ion-item>
+
+          <ion-item *ngIf="requestItem.itemID !== '1'">
+            <ion-radio item-left  [checked]="false" [value]="requestItem.itemID" (ionSelect)="onChangeHandler(requestItem,$event)"></ion-radio>
+            <ion-thumbnail item-left class="thumbnail">
+              <img *ngIf="requestItem.itemImage" [src]="'data:image/png;base64,'+ requestItem.itemImage"/>
+            </ion-thumbnail>
+            <ion-label>{{ requestItem.itemName }}</ion-label>
+          </ion-item>
+
       </ion-list>
-      </form>
     </ion-grid>
 </ion-content>

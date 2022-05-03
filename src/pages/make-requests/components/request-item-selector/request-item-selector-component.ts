@@ -1,10 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import { NavParams, ViewController,NavController } from "ionic-angular";
-import {
-  Validators,
-  FormBuilder,
-  FormGroup
-} from '@angular/forms'; // 1) Import missing classes from Angular
+import { NavParams, ViewController } from "ionic-angular";
 
 @Component({
   selector: 'request-item-selector-component',
@@ -13,13 +8,17 @@ import {
 export class RequestItemSelectorComponent implements OnInit{
 
   requestItems: any;
-  itemListForm: FormGroup; // 2) Define the interface of our form
+  currentSelectedItem = [];
+  itemChecked;
 
-  constructor(public viewCtrl: ViewController,public params: NavParams,private navCtrl: NavController,private formBuilder: FormBuilder) {
+  constructor(public viewCtrl: ViewController,public params: NavParams) {
    this.initializeItems();
-    this.itemListForm = this.formBuilder.group({ // 4) Initialize our form
-      itemList: ['', Validators.required], // 5) Define 'formControlName' inside form
-    })
+   this.currentSelectedItem = this.params.get("charNum");
+
+    if(this.currentSelectedItem.length>0) {
+      this.itemChecked = this.currentSelectedItem[0].itemID;
+    }
+
   }
   ngOnInit() {
   }
@@ -72,7 +71,8 @@ export class RequestItemSelectorComponent implements OnInit{
     }
   }
 
-  onChangeHandler(event: any) {
-    this.viewCtrl.dismiss(event);
+  onChangeHandler(item:any, $event) {
+    this.viewCtrl.dismiss(item);
   }
+
 }
